@@ -31,12 +31,12 @@ public class FileSorter {
 
         Path destination = categoryDir.resolve(file.getFileName());
         if (Files.exists(destination)) {
-            System.out.println("Skipping (already exists at destination): " + file.getFileName());
+            IO.println("Skipping (already exists at destination): " + file.getFileName());
             return;
         }
 
         Files.move(file, destination, StandardCopyOption.REPLACE_EXISTING);
-        System.out.println(file.getFileName() + " -> " + category.folderName() + "/");
+        IO.println(file.getFileName() + " -> " + category.folderName() + "/");
     }
 
     private String extensionOf(String fileName) {

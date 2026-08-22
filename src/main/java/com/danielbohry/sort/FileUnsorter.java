@@ -34,13 +34,13 @@ public class FileUnsorter {
 
                 Path destination = targetDir.resolve(entry.getFileName());
                 if (Files.exists(destination)) {
-                    System.out.println("Skipping (already exists at destination): " + entry.getFileName());
+                    IO.println("Skipping (already exists at destination): " + entry.getFileName());
                     allMoved = false;
                     continue;
                 }
 
                 Files.move(entry, destination, StandardCopyOption.REPLACE_EXISTING);
-                System.out.println(categoryDir.getFileName() + "/" + entry.getFileName() + " -> " + entry.getFileName());
+                IO.println(categoryDir.getFileName() + "/" + entry.getFileName() + " -> " + entry.getFileName());
             }
         }
 

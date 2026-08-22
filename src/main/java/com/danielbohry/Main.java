@@ -15,7 +15,7 @@ public class Main {
         "deduplicate", new DeduplicateCommand()
     );
 
-    public static void main(String[] args) {
+    static void main(String[] args) {
         if (args.length < 1) {
             printUsage();
             System.exit(1);

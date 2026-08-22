@@ -57,7 +57,7 @@ public class FileDeduplicator {
         Files.createDirectories(duplicatedDir);
         Path destination = uniqueDestination(duplicatedDir, file.getFileName().toString());
         Files.move(file, destination, StandardCopyOption.REPLACE_EXISTING);
-        System.out.println(file + " -> duplicated/" + destination.getFileName());
+        IO.println(file + " -> duplicated/" + destination.getFileName());
     }
 
     private Path uniqueDestination(Path dir, String fileName) {
