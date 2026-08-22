@@ -1,0 +1,38 @@
+name: Release
+
+on:
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: write
+
+jobs:
+  build-and-release:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up JDK
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '25'
+
+      - name: Build jar
+        run: ./gradlew jar
+
+      - name: Compute version
+        id: version
+        run: echo "value=v$(date +%y).$(date +%-m).${{ github.run_number }}" >> "$GITHUB_OUTPUT"
+
+      - name: Create GitHub release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh release create "${{ steps.version.outputs.value }}" \
+            build/libs/file-utils.jar \
+            --title "${{ steps.version.outputs.value }}" \
+            --notes "Automated build from commit ${{ github.sha }}"

@@ -15,3 +15,10 @@ CLI tool for organizing files in a directory.
 ./gradlew run --args="unsort /path/to/directory"
 ./gradlew run --args="deduplicate /path/to/directory"
 ```
+
+## Building a jar
+
+```
+./gradlew jar
+java -jar build/libs/file-utils.jar sort /path/to/directory
+```

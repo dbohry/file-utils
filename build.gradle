@@ -4,7 +4,6 @@ plugins {
 }
 
 group = 'com.danielbohry'
-version = '1.0-SNAPSHOT'
 
 repositories {
     mavenCentral()
@@ -18,6 +17,12 @@ dependencies {
 
 application {
     mainClass = 'com.danielbohry.Main'
+}
+
+jar {
+    manifest {
+        attributes 'Main-Class': 'com.danielbohry.Main'
+    }
 }
 
 test {
