@@ -46,7 +46,6 @@ public class FileDeduplicator {
             if (duplicates.size() < 2) {
                 continue;
             }
-            // Oldest modification time is kept as the original; the rest are moved.
             duplicates.sort(Comparator.comparing(lastModified::get));
             for (int i = 1; i < duplicates.size(); i++) {
                 moveToDuplicated(duplicates.get(i), duplicatedDir);
