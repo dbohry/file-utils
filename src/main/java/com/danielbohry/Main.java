@@ -2,13 +2,15 @@ package com.danielbohry;
 
 import com.danielbohry.command.Command;
 import com.danielbohry.command.SortCommand;
+import com.danielbohry.command.UnsortCommand;
 
 import java.util.Map;
 
 public class Main {
 
     private static final Map<String, Command> COMMANDS = Map.of(
-        "sort", new SortCommand()
+        "sort", new SortCommand(),
+        "unsort", new UnsortCommand()
     );
 
     public static void main(String[] args) {
@@ -39,6 +41,7 @@ public class Main {
     private static void printUsage() {
         System.err.println("Usage: file-utils <command> [args]");
         System.err.println("Commands:");
-        System.err.println("  sort <directory>   Sort files in <directory> into type-based subfolders");
+        System.err.println("  sort <directory>     Sort files in <directory> into type-based subfolders");
+        System.err.println("  unsort <directory>   Move files back from type-based subfolders into <directory> and remove them");
     }
 }
